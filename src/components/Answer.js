@@ -5,7 +5,7 @@ import Radio from '@material-ui/core/Radio';
 function Answer(props) {
 
     return (
-        <FormControlLabel value={props.index} control={<Radio />} label={props.answer} />
+        <FormControlLabel value={props.index} control={<Radio color="primary"/>} label={props.answer} />
     );
 }
 

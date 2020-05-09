@@ -1,9 +1,18 @@
 
 import './App.css';
 import React, { useReducer } from 'react';
+import Header from './components/Header';
 import Progress from './components/Progress';
-import Answers from './components/Answers';
+import Question from './components/Question';
 import QuizContext from './context/QuizContext';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Alert from '@material-ui/lab/Alert';
+import Typography from '@material-ui/core/Typography';
+import { green } from '@material-ui/core/colors';
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
+
 
 import {
   SET_ANSWERS,
@@ -54,12 +63,14 @@ function App() {
     currentQuestion: 0,
     currentAnswer: '',
     answers: [],
+    correctAnswers: [],
     showResults: false,
+    showHomepage: true,
     error: '',
   };
 
   const [state, dispatch] = useReducer(quizReducer, initialState);
-  const { currentQuestion, currentAnswer, answers, showResults, error } = state;
+  const { correctAnswers, currentQuestion, currentAnswer, answers, showResults, showHomepage, error } = state;
 
   const question = questions[currentQuestion];
 
@@ -68,15 +79,15 @@ function App() {
       return;
     }
 
-    return <div className="error">{error}</div>;
+    return <Alert className="Alert" severity="error">{error}</Alert>;
   };
 
   const renderResultMark = (question, answer) => {
     if (question.correct_answer === answer.answer) {
-      return <span className="correct">Correct</span>;
+      return <CheckIcon style={{ color: green[500] }} />;
     }
 
-    return <span className="failed">Failed</span>;
+    return <CloseIcon color="secondary" />;
   };
 
   const renderResultsData = () => {
@@ -86,9 +97,9 @@ function App() {
       );
 
       return (
-        <div key={question.id}>
-          {question.question} - {renderResultMark(question, answer)}
-        </div>
+        <Typography variant="body1" color="inherit" className="Text-Color" key={question.id}>
+          {renderResultMark(question, answer)} {question.question}
+        </Typography>
       );
     });
   };
@@ -105,45 +116,79 @@ function App() {
       return;
     }
 
+    if (question.correct_answer === currentAnswer) {
+      correctAnswers.push(answer);
+    }
     answers.push(answer);
     dispatch({ type: SET_ANSWERS, answers });
     dispatch({ type: SET_CURRENT_ANSWER, currentAnswer: '' });
 
     if (currentQuestion + 1 < questions.length) {
-      dispatch({
-        type: SET_CURRENT_QUESTION,
-        currentQuestion: currentQuestion + 1,
-      });
+      setTimeout(function () {
+        dispatch({
+          type: SET_CURRENT_QUESTION,
+          currentQuestion: currentQuestion + 1,
+        });
+      }, 200);
+
       return;
     }
 
     dispatch({ type: SET_SHOW_RESULTS, showResults: true });
   };
 
-  if (showResults) {
+  if (showHomepage) {
     return (
-      <div className="container results">
-        <h2>Results</h2>
+      <React.Fragment>
+        <Header />
+        <Typography variant="h3" color="inherit" align="center" className="Text-Color">
+          Hello, Welcome!<br></br>
+              Test your knowledge
+      </Typography>
+        <Grid container justify="center">
+          <Button variant="contained" color="primary" onClick={restart} size="large" disableElevation>
+            Start the Quiz!
+              </Button>
+        </Grid>
+
+      </React.Fragment>
+    );
+  }
+  else if (showResults) {
+    return (
+      <React.Fragment>
+        <Header />
+        <Typography variant="h3" color="inherit" align="center" className="Text-Color">
+          You got {((correctAnswers.length / answers.length) * 100).toFixed(1)}%<Typography variant="caption" color="inherit" align="center" className="Text-Color">({correctAnswers.length} of {answers.length})</Typography> of the questions correct!
+        </Typography>
+        <Typography variant="button" color="inherit" align="center" className="Text-Color">
+          Results
+        </Typography>
         <ul>{renderResultsData()}</ul>
-        <button className="btn btn-primary" onClick={restart}>
-          Restart
-            </button>
-      </div>
+        <Grid container justify="center">
+          <Button variant="contained" onClick={restart} color="primary" size="large" disableElevation>
+            Try Again?
+            </Button>
+        </Grid>
+      </React.Fragment>
     );
   } else {
     return (
       <QuizContext.Provider value={{ state, dispatch }}>
-        <div className="container">
+        <React.Fragment>
+          <Header />
           <Progress
             total={questions.length}
             current={currentQuestion + 1}
           />
+          <Question />
           {renderError()}
-          <Answers />
-          <button className="btn btn-primary" onClick={next}>
-            Confirm and Continue
-                </button>
-        </div>
+          <Grid container justify="center">
+            <Button variant="contained" onClick={next} color="primary" size="large" disableElevation>
+              Confirm and Continue
+            </Button>
+          </Grid>
+        </React.Fragment>
       </QuizContext.Provider>
     );
   }
