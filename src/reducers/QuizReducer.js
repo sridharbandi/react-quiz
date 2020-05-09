@@ -38,9 +38,11 @@ function quizReducer(state, action) {
             return {
                 ...state,
                 answers: [],
+                correctAnswers: [],
                 currentQuestion: 0,
                 currentAnswer: '',
                 showResults: false,
+                showHomepage: false,
                 error: '',
             };
         default:
