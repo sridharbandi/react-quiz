@@ -7,12 +7,44 @@
   color: #333 !important;
 }
 
-h3{
+h3, h4{
   margin-top: 30px !important;
+  font-weight: 300 !important;
+  margin-bottom: 15px !important;
+}
+
+h6{
+  margin-top: 30px !important;
+  margin-right: 5px !important;
+  font-weight: 300 !important;
+}
+
+h4{
+  text-align: left !important;
+}
+
+.MuiFormControlLabel-label, .MuiTypography-body1{
   font-weight: 300 !important;
 }
 
 button {
-  margin-top: 30px !important;
- border-radius: inherit !important;
+  margin-top: 15px !important;
+  border-radius: inherit !important;
+}
+
+.Card{
+  margin: 0px 5px;
+  border-radius: inherit !important;
+}
+
+.Alert{
+  margin: 10px !important;
+}
+
+.Icon{
+  margin-top: 5px !important;
+}
+
+body {
+  background-color: #dcdde1;
 }
