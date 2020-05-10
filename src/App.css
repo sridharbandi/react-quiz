@@ -48,3 +48,10 @@ button {
 body {
   background-color: #dcdde1;
 }
+
+code {
+  background-color: lightgray;
+  padding: .2em .4em;
+  border-radius: 3px;
+  color: brown;
+}
