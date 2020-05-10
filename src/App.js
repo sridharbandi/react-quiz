@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import { green } from '@material-ui/core/colors';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
+import Questions from './api/sampleData.json';
 
 
 import {
@@ -25,7 +26,7 @@ import {
 import quizReducer from './reducers/QuizReducer';
 
 function App() {
-  const questions = [
+  /* const Questions = [
     {
       id: 1,
       question: 'Which statement about Hooks is not true?',
@@ -56,10 +57,10 @@ function App() {
         { option: 'd', text: 'useRequest()' }],
       correct_answer: 'c',
     },
-  ];
+  ]; */
 
   const initialState = {
-    questions,
+    Questions,
     currentQuestion: 0,
     currentAnswer: '',
     answers: [],
@@ -72,7 +73,7 @@ function App() {
   const [state, dispatch] = useReducer(quizReducer, initialState);
   const { correctAnswers, currentQuestion, currentAnswer, answers, showResults, showHomepage, error } = state;
 
-  const question = questions[currentQuestion];
+  const question = Questions[currentQuestion];
 
   const renderError = () => {
     if (!error) {
@@ -92,7 +93,7 @@ function App() {
 
   const renderResultsData = () => {
     return answers.map(answer => {
-      const question = questions.find(
+      const question = Questions.find(
         question => question.id === answer.questionId
       );
 
@@ -123,7 +124,7 @@ function App() {
     dispatch({ type: SET_ANSWERS, answers });
     dispatch({ type: SET_CURRENT_ANSWER, currentAnswer: '' });
 
-    if (currentQuestion + 1 < questions.length) {
+    if (currentQuestion + 1 < Questions.length) {
       setTimeout(function () {
         dispatch({
           type: SET_CURRENT_QUESTION,
@@ -178,7 +179,7 @@ function App() {
         <React.Fragment>
           <Header />
           <Progress
-            total={questions.length}
+            total={Questions.length}
             current={currentQuestion + 1}
           />
           <Question />
