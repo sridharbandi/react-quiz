@@ -7,11 +7,13 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import Typography from '@material-ui/core/Typography';
 import { SET_CURRENT_ANSWER, SET_ERROR } from '../reducers/Const';
+import ReactHtmlParser from 'react-html-parser';
+
 
 function Question() {
     const { state, dispatch } = useContext(quizContext);
-    const { currentAnswer, currentQuestion, questions } = state;
-    const question = questions[currentQuestion];
+    const { currentAnswer, currentQuestion, Questions } = state;
+    const question = Questions[currentQuestion];
 
     const handleChange = (event) => {
         dispatch({
@@ -26,14 +28,14 @@ function Question() {
             <CardContent>
                 <FormControl component="fieldset">
                     <Typography variant="h4" color="inherit" align="center" className="Text-Color">
-                        {question.question}
+                        {ReactHtmlParser(question.question)}
                     </Typography>
                     <RadioGroup aria-label="answer" name="answers" value={currentAnswer} onChange={handleChange}>
                         {question.answers.map((a, i) => (
                             <Answer
                                 key={i}
                                 index={a.option}
-                                answer={a.text}
+                                answer={ReactHtmlParser(a.text)}
                             />
                         ))}
                     </RadioGroup>
