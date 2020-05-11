@@ -1,0 +1,110 @@
+[
+    {
+        "id": 1,
+        "question": "Which statement <code class='inlinecode'>about</code> Hooks is not true?",
+        "code": [
+            "function createTable(rows, cols) {",
+            "var j=1;",
+            "var output = <table border='1' width='500' cellspacing='0'cellpadding='5'>;",
+            "for(i=1;i<=rows;i++) {",
+            "  output = output + <tr>;",
+            "  while(j<=cols) {",
+            "     output = output + <td> + i*j + </td>;",
+            "       j = j+1;",
+            "     }",
+            "     output = output + </tr>;",
+            "     j = 1;",
+            " }",
+            " output = output + </table>;",
+            " document.write(output);"
+        ],
+        "answers": [
+            {
+                "option": "a",
+                "text": "Hooks are 100% <code class='inlinecode'>backwards-compatible</code> and can be used side by side with classes"
+            },
+            {
+                "option": "b",
+                "text": "Hooks are still in beta and not available yet"
+            },
+            {
+                "option": "c",
+                "text": "Hooks are completely opt-in, there's no need to rewrite existing code"
+            },
+            {
+                "option": "d",
+                "text": "All of the above"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 2,
+        "question": "Which one is not a Hook?",
+        "answers": [
+            {
+                "option": "a",
+                "text": "useState()"
+            },
+            {
+                "option": "b",
+                "text": "<code class='inlinecode'>useConst()</code>"
+            },
+            {
+                "option": "c",
+                "text": "useReducer()"
+            },
+            {
+                "option": "d",
+                "text": "All of the above"
+            }
+        ],
+        "correct_answer": "b"
+    },
+    {
+        "id": 3,
+        "question": "What Hook should be used for data fetching?",
+        "answers": [
+            {
+                "option": "a",
+                "text": "useDataFetching()"
+            },
+            {
+                "option": "b",
+                "text": "useApi()"
+            },
+            {
+                "option": "c",
+                "text": "useEffect()"
+            },
+            {
+                "option": "d",
+                "text": "useRequest()"
+            }
+        ],
+        "correct_answer": "c"
+    },
+    {
+        "id": 4,
+        "question": "What Hook should be used for data fetching sridhar?",
+        "answers": [
+            {
+                "option": "a",
+                "text": "useDataFetching()"
+            },
+            {
+                "option": "b",
+                "text": "useApi()"
+            },
+            {
+                "option": "c",
+                "text": "useEffect()"
+            },
+            {
+                "option": "d",
+                "text": "useRequest()"
+            }
+        ],
+        "correct_answer": "c"
+    }
+]
