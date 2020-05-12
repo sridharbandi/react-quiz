@@ -9,7 +9,6 @@ function Progress(props) {
                 Question {props.current} of {props.total}
             </Typography>
         </Grid>
-
     );
 }
 

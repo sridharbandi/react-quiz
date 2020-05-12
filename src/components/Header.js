@@ -7,7 +7,7 @@ const header = () => (
     <AppBar elevation={0} position='sticky' color='primary'>
         <Toolbar>
             <Typography variant="h5" color="inherit" className="Text">
-                Quiz
+                Be An Expert - Quiz
             </Typography>
         </Toolbar>
     </AppBar>
