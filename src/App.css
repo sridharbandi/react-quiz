@@ -38,7 +38,7 @@ button {
 }
 
 .Alert{
-  margin: 10px !important;
+  border-radius: 0em !important;
 }
 
 .Icon{
@@ -85,4 +85,20 @@ pre code:first-child {
   font-size: 10rem !important;
   text-align: center;
   width: -webkit-fill-available !important;
+}
+
+.Image{
+  max-height: 480px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .Image{
+    max-width: 320px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .Image{
+    max-width: 768px;
+  }
 }
