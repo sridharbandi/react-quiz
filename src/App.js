@@ -6,12 +6,12 @@ import Question from './components/Question';
 import QuizContext from './context/QuizContext';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Alert from '@material-ui/lab/Alert';
 import Typography from '@material-ui/core/Typography';
 import { green } from '@material-ui/core/colors';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import ReportProblemIcon from '@material-ui/icons/ReportProblem';
+import ReactHtmlParser from 'react-html-parser';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { useParams } from "react-router-dom";
 
@@ -53,23 +53,14 @@ function App() {
   };
 
   const [state, dispatch] = useReducer(quizReducer, initialState);
-  const { correctAnswers, currentQuestion, currentAnswer, answers, showResults, showHomepage, error } = state;
+  const { correctAnswers, currentQuestion, currentAnswer, answers, showResults, showHomepage } = state;
 
   const question = Questions[currentQuestion];
-
-  const renderError = () => {
-    if (!error) {
-      return;
-    }
-
-    return <Alert className="Alert" severity="error">{error}</Alert>;
-  };
 
   const renderResultMark = (question, answer) => {
     if (question.correct_answer === answer.answer) {
       return <CheckIcon style={{ color: green[500] }} />;
     }
-
     return <CloseIcon color="secondary" />;
   };
 
@@ -81,7 +72,7 @@ function App() {
 
       return (
         <Typography variant="body1" color="inherit" className="Text-Color" key={question.id}>
-          {renderResultMark(question, answer)} {question.question}
+          {renderResultMark(question, answer)} {ReactHtmlParser(question.question)}
         </Typography>
       );
     });
@@ -95,7 +86,7 @@ function App() {
     const answer = { questionId: question.id, answer: currentAnswer };
 
     if (!currentAnswer) {
-      dispatch({ type: SET_ERROR, error: 'Please select an option' });
+      dispatch({ type: SET_ERROR, error: 'Please select an option(s)' });
       return;
     }
 
@@ -142,12 +133,14 @@ function App() {
             Hello, Welcome!<br></br>
               Test your knowledge
             </Typography>
+          <Typography variant="h6" color="inherit" align="center" className="Text-Color">
+            Quiz - {Questions.length} Questions
+            </Typography>
           <Grid container justify="center">
             <Button variant="contained" color="primary" onClick={restart} size="large" disableElevation>
               Start the Quiz!
               </Button>
           </Grid>
-
         </React.Fragment>
       </ThemeProvider>
     );
@@ -160,10 +153,13 @@ function App() {
           <Typography variant="h3" color="inherit" align="center" className="Text-Color">
             You got {((correctAnswers.length / answers.length) * 100).toFixed(1)}%<Typography variant="caption" color="inherit" align="center" className="Text-Color">({correctAnswers.length} of {answers.length})</Typography> of the questions correct!
         </Typography>
-          <Typography variant="button" color="inherit" align="center" className="Text-Color">
-            Results
-        </Typography>
-          <ul>{renderResultsData()}</ul>
+          <Grid container justify="center" alignItems="center">
+            <Grid item xs={12} md={8} className="Grid-Item">
+              <Typography variant="h6" color="inherit"  className="Text-Color">
+                Results
+            </Typography>
+              <ul>{renderResultsData()}</ul>
+            </Grid></Grid>
           <Grid container justify="center">
             <Button variant="contained" onClick={restart} color="primary" size="large" disableElevation>
               Try Again?
@@ -179,7 +175,6 @@ function App() {
           <React.Fragment>
             <Header />
             <Question />
-            {renderError()}
             <Grid container justify="center">
               <Button variant="contained" onClick={next} color="primary" size="large" disableElevation>
                 Confirm and Continue
