@@ -41,6 +41,7 @@
     {
         "id": 2,
         "question": "Which one is not a Hook?",
+        "image": "logo512.png",
         "answers": [
             {
                 "option": "a",
@@ -64,6 +65,7 @@
     {
         "id": 3,
         "question": "What Hook should be used for data fetching?",
+        "image": "Background.png",
         "answers": [
             {
                 "option": "a",
