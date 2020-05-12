@@ -3,18 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { HashRouter as Router, Route, } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Switch>
-        <Route path="/:id?" component={App} />
-      </Switch>
+    <Router basename={process.env.PUBLIC_URL} >
+      <Route path="/:id?" component={App} />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
