@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Answer from './Answer';
 import Grid from '@material-ui/core/Grid';
 import Progress from './Progress';
+import Alert from '@material-ui/lab/Alert';
 import quizContext from '../context/QuizContext';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
@@ -11,12 +12,21 @@ import ReactHtmlParser from 'react-html-parser';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
+const importAll = require =>
+    require.keys().reduce((image, next) => {
+        image[next.replace("./", "")] = require(next);
+        return image;
+    }, {});
+
+const images = importAll(require.context("../img", false, /\.(png|jpe?g|svg)$/));
 
 function Question() {
     const { state, dispatch } = useContext(quizContext);
-    const { currentAnswer, currentQuestion, Questions } = state;
+    const { currentAnswer, currentQuestion, Questions, error } = state;
     const question = Questions[currentQuestion];
 
+    //const images = allImages.keys().map(allImages);
+    console.log(images)
     const handleChange = (event) => {
         dispatch({
             type: SET_CURRENT_ANSWER,
@@ -33,6 +43,7 @@ function Question() {
                         total={Questions.length}
                         current={currentQuestion + 1}
                     />
+                    {error && <Alert className="Alert" severity="error">{error}</Alert>}
                     <FormControl component="fieldset" className="Full-Width">
                         <Typography variant="h4" color="inherit" align="center" className="Text-Color">
                             {question.id}. {ReactHtmlParser(question.question)}
@@ -44,6 +55,8 @@ function Question() {
                                 </SyntaxHighlighter>
                             </div>
                         }
+                        {question.image &&
+                            <img className="Image" alt='' src={images[`${question.image}`]} />}
                         <RadioGroup aria-label="answer" name="answers" value={currentAnswer} onChange={handleChange}>
                             {question.answers.map((a, i) => (
                                 <Answer
