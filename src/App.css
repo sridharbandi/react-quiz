@@ -87,6 +87,10 @@ pre code:first-child {
   width: -webkit-fill-available !important;
 }
 
+.Space-Bottom{
+  margin-bottom: 100px !important;
+}
+
 .Image{
   max-height: 480px;
 }
