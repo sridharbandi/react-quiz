@@ -161,7 +161,7 @@ function App() {
               <ul>{renderResultsData()}</ul>
             </Grid></Grid>
           <Grid container justify="center">
-            <Button variant="contained" onClick={restart} color="primary" size="large" disableElevation>
+            <Button className="Space-Bottom" variant="contained" onClick={restart} color="primary" size="large" disableElevation>
               Try Again?
             </Button>
           </Grid>
@@ -176,7 +176,7 @@ function App() {
             <Header />
             <Question />
             <Grid container justify="center">
-              <Button variant="contained" onClick={next} color="primary" size="large" disableElevation>
+              <Button className="Space-Bottom" variant="contained" onClick={next} color="primary" size="large" disableElevation>
                 Confirm and Continue
             </Button>
             </Grid>
