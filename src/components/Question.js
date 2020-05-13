@@ -25,8 +25,6 @@ function Question() {
     const { currentAnswer, currentQuestion, Questions, error } = state;
     const question = Questions[currentQuestion];
 
-    //const images = allImages.keys().map(allImages);
-    console.log(images)
     const handleChange = (event) => {
         dispatch({
             type: SET_CURRENT_ANSWER,
