@@ -1,87 +1,69 @@
 [
     {
         "id": 1,
-        "question": "Which statement <code class='inlinecode'>about</code> Hooks is not true?",
-        "code": [
-            "function createTable(rows, cols) {",
-            "var j=1;",
-            "var output = <table border='1' width='500' cellspacing='0'cellpadding='5'>;",
-            "for(i=1;i<=rows;i++) {",
-            "  output = output + '<tr>';",
-            "  while(j<=cols) {",
-            "     output = output + '<td>' + i*j + '</td>';",
-            "       j = j+1;",
-            "     }",
-            "     output = output + '</tr>';",
-            "     j = 1;",
-            " }",
-            " output = output + '</table>';",
-            " document.write(output);"
-        ],
+        "question": "Find the sum of <code class='inlinecode'>11 + 22 + 33</code>",
         "answers": [
             {
                 "option": "a",
-                "text": "Hooks are 100% <code class='inlinecode'>backwards-compatible</code> and can be used side by side with classes"
+                "text": "70"
             },
             {
                 "option": "b",
-                "text": "Hooks are still in beta and not available yet"
+                "text": "66"
             },
             {
                 "option": "c",
-                "text": "Hooks are completely opt-in, there's no need to rewrite existing code"
+                "text": "77"
             },
             {
                 "option": "d",
-                "text": "All of the above"
+                "text": "76"
             }
         ],
         "correct_answer": "b"
     },
     {
         "id": 2,
-        "question": "Which one is not a Hook?",
-        "image": "logo512.png",
+        "question": "Subtract <code class='inlinecode'>457</code> from <code class='inlinecode'>832</code>",
         "answers": [
             {
                 "option": "a",
-                "text": "useState()"
+                "text": "375"
             },
             {
                 "option": "b",
-                "text": "<code class='inlinecode'>useConst()</code>"
+                "text": "365"
             },
             {
                 "option": "c",
-                "text": "useReducer()"
+                "text": "355"
             },
             {
                 "option": "d",
-                "text": "All of the above"
+                "text": "345"
             }
         ],
-        "correct_answer": "b"
+        "correct_answer": "a"
     },
     {
         "id": 3,
-        "question": "What Hook should be used for data fetching?",
-        "image": "Background.png",
+        "question": "Find the product of <code class='inlinecode'>72 × 3</code>",
         "answers": [
             {
                 "option": "a",
-                "text": "useDataFetching()"
+                "text": "106"
             },
             {
                 "option": "b",
-                "text": "useApi()"
+                "text": "206"
             },
             {
                 "option": "c",
-                "text": "useEffect()"
+                "text": "216"
             },
             {
                 "option": "d",
-                "text": "useRequest()"
+                "text": "116"
             }
         ],
         "correct_answer": "c"

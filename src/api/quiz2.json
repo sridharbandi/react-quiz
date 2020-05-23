@@ -1,110 +1,112 @@
 [
     {
         "id": 1,
-        "question": "Which statement <code class='inlinecode'>about</code> Hooks is not true?",
+        "question": "Which of the following is the outcome of below Java code",
         "code": [
-            "function createTable(rows, cols) {",
-            "var j=1;",
-            "var output = <table border='1' width='500' cellspacing='0'cellpadding='5'>;",
-            "for(i=1;i<=rows;i++) {",
-            "  output = output + <tr>;",
-            "  while(j<=cols) {",
-            "     output = output + <td> + i*j + </td>;",
-            "       j = j+1;",
-            "     }",
-            "     output = output + </tr>;",
-            "     j = 1;",
-            " }",
-            " output = output + </table>;",
-            " document.write(output);"
+            "public class Example { ",
+            "   public static void main(String args[]){",
+            "      System.out.println(5+9);",
+            "   }",
+            " }"
         ],
         "answers": [
             {
                 "option": "a",
-                "text": "Hooks are 100% <code class='inlinecode'>backwards-compatible</code> and can be used side by side with classes"
+                "text": "14"
             },
             {
                 "option": "b",
-                "text": "Hooks are still in beta and not available yet"
+                "text": "5+9"
             },
             {
                 "option": "c",
-                "text": "Hooks are completely opt-in, there's no need to rewrite existing code"
+                "text": "Compile time error"
             },
             {
                 "option": "d",
-                "text": "All of the above"
+                "text": "\"5+9\""
             }
         ],
-        "correct_answer": "b"
+        "correct_answer": "a"
     },
     {
         "id": 2,
-        "question": "Which one is not a Hook?",
+        "question": "What is the default value of byte variable?",
         "answers": [
             {
                 "option": "a",
-                "text": "useState()"
+                "text": "0.0"
             },
             {
                 "option": "b",
-                "text": "<code class='inlinecode'>useConst()</code>"
+                "text": "0"
             },
             {
                 "option": "c",
-                "text": "useReducer()"
+                "text": "null"
             },
             {
                 "option": "d",
-                "text": "All of the above"
+                "text": "undefined"
             }
         ],
         "correct_answer": "b"
     },
     {
         "id": 3,
-        "question": "What Hook should be used for data fetching?",
+        "question": "What will be output of  x in following code?",
+        "code": [
+            "class Test { ",
+            "   public static void main(String[] args) {",
+            "       int x = 1;",
+            "       if (x == 1){",
+            "           x = x + 1 ",
+            "       }",
+            "   }",
+            "}"
+        ],
         "answers": [
             {
                 "option": "a",
-                "text": "useDataFetching()"
+                "text": "0"
             },
             {
                 "option": "b",
-                "text": "useApi()"
+                "text": "1"
             },
             {
                 "option": "c",
-                "text": "useEffect()"
+                "text": "2"
             },
             {
                 "option": "d",
-                "text": "useRequest()"
+                "text": "3"
             }
         ],
         "correct_answer": "c"
     },
     {
         "id": 4,
-        "question": "What Hook should be used for data fetching sridhar?",
+        "question": "Which of the following is the outcome of below Java code?",
+        "image":"quiz.png",
         "answers": [
             {
                 "option": "a",
-                "text": "useDataFetching()"
+                "text": "It won't  <code class='inlinecode'>compile</code>"
             },
             {
                 "option": "b",
-                "text": "useApi()"
+                "text": "React  Quiz"
             },
             {
                 "option": "c",
-                "text": "useEffect()"
+                "text": "React, Quiz"
             },
             {
                 "option": "d",
-                "text": "useRequest()"
+                "text": "<code class='inlinecode'>\"React \" + \" Quiz\"</code>"
             }
         ],
-        "correct_answer": "c"
+        "correct_answer": "b"
     }
 ]
